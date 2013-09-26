@@ -1,4 +1,4 @@
-pialert
+Sensor & alert application for Raspberry Pi
 =======
 
 ### Requirements
