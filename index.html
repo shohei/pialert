@@ -1,0 +1,85 @@
+<html>
+<head>
+  <title>who's in kitanaka?</title>
+  <meta charset="UTF-8">
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/flatstrap/css/bootstrap.css">
+  <script>
+    $(function(){
+      var socket = io.connect();
+      socket.on('connect_ok',function(data){
+        console.log(data);
+        $("#code").text(data["message"]);
+        socket.emit('trigger1',{my:'data'});
+      });
+      socket.on('2f_on',function(data){
+        var label = data["label"];
+        var content =  data["content"];
+        $("#dataarea").append('<tr><td>'+label+'</td><td>'+content+'</td></tr>');
+        $("#kitanaka").children("img").attr({'src':'./image/kitanaka2.png'});
+	});
+      socket.on('2f_off',function(data){
+        var label = data["label"];
+        var content =  data["content"];
+        $("#dataarea").append('<tr><td>'+label+'</td><td>'+content+'</td></tr>');
+        $("#kitanaka").children("img").attr({'src':'./image/kitanaka.png'});
+      });
+
+  var i = 0;
+
+  $('#sw').click(function(){
+    i ++;
+    var k = i % 4;
+    switch(k){
+    case 0:
+      $("#kitanaka").children("img").attr({'src':'./image/kitanaka.png'});
+      break;
+    case 1:
+      $("#kitanaka").children("img").attr({'src':'./image/kitanaka2.png'});
+      break;
+    case 2:
+      $("#kitanaka").children("img").attr({'src':'./image/kitanaka3.png'});
+      break;
+    case 3:
+      $("#kitanaka").children("img").attr({'src':'./image/kitanaka23.png'});
+      break;
+   }
+  });
+
+    });
+  </script>
+  <style>
+    body {
+      margin: 30px 30px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Kitanaka Alert System</h2>
+<button id="sw">SWITCH</button>
+
+<div id="kitanaka">
+<img src="./image/kitanaka.png" />
+</div>
+
+
+  <h3 id="code"></h3>
+
+  <h4>Emitted data</h4>
+  <table id="dataarea" class="table table-striped">
+    <thead>
+     <tr>
+      <th>data label</th>
+      <th>data content</th>
+     </tr>
+     </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <p id="signal"></p>
+
+</body>
+</html>
+
+
