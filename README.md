@@ -9,4 +9,5 @@ Sensor & alert application for Raspberry Pi
   
     $ node app.js
     
+Open http://localhost:3000
 
