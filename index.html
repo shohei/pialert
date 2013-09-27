@@ -13,18 +13,20 @@
         $("#code").text(data["message"]);
         socket.emit('trigger1',{my:'data'});
       });
-      socket.on('2f_on',function(data){
-        var label = data["label"];
-        var content =  data["content"];
-        $("#dataarea").append('<tr><td>'+label+'</td><td>'+content+'</td></tr>');
-        $("#kitanaka").children("img").attr({'src':'./image/kitanaka2.png'});
+      socket.on('3f_on',function(data){
+        //var label = data["label"];
+        //var content =  data["content"];
+        //$("#dataarea").append('<tr><td>'+label+'</td><td>'+content+'</td></tr>');
+	$("#kitanaka").children("img").attr({'src':'./image/kitanaka3.png'});
+	socket.emit("trigger1",{my:'3f_on triggered'});
 	});
-      socket.on('2f_off',function(data){
-        var label = data["label"];
-        var content =  data["content"];
-        $("#dataarea").append('<tr><td>'+label+'</td><td>'+content+'</td></tr>');
+      socket.on('3f_off',function(data){
+        //var label = data["label"];
+        //var content =  data["content"];
+        //$("#dataarea").append('<tr><td>'+label+'</td><td>'+content+'</td></tr>');
         $("#kitanaka").children("img").attr({'src':'./image/kitanaka.png'});
-      });
+	socket.emit("trigger1",{my:'3f_off triggered'});
+	});
 
   var i = 0;
 
