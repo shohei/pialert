@@ -1,0 +1,20 @@
+{
+  "name": "pialert",
+  "version": "0.0.0",
+  "description": "Sensor & alert application for Raspberry Pi =======",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shohei/pialert.git"
+  },
+  "author": "Shohei Aoki",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "44ad09b8eed0a84cf4ee7dabcea474c1fb0161b2",
+  "bugs": {
+    "url": "https://github.com/shohei/pialert/issues"
+  }
+}
